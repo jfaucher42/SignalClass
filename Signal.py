@@ -13,6 +13,9 @@ class Signal(object):
 		self.signal = tmp[1]
 		if (type(self.signal[0]) == ndarray):
 			self.stereo = True
+		time_limit = float(len(self.signal))
+		time_limit = time_limit / self.rate
+		self._time = time_limit
 
 	def write_wav(self, filename):
 		if len(self.signal) == 0:
@@ -33,14 +36,9 @@ class Signal(object):
 				nb = (tmp[0] + tmp[1]) / 2
 				frequency_axis.append(nb)
 
-		time_limit = self.__time()
+		time_limit = self._time
 		time_axis = arange(0, time_limit, time_limit / len(frequency_axis))
 		plt.plot(time_axis, frequency_axis)
 		plt.xlabel("Time")
 		plt.ylabel("Frequency")
 		plt.show()
-
-	def __time(self):
-		time_limit = float(len(self.signal))
-		time_limit = time_limit / self.rate
-		return time_limit
