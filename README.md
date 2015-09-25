@@ -10,5 +10,4 @@ So if you want to try the Signal class on a .wav. Just put the file into './reso
 You need to install SciPy in order to use the class on this <a href="http://www.scipy.org/install.html" target="_blank" >link</a>
 
 ## Usage
-To test just run
 		$> python test.py
